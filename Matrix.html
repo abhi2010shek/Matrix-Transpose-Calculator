@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matrix Transpose Calculator</title>
+    <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+/* Style the container */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+/* Style the heading */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #007bff;
+}
+
+/* Style the labels */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Style the input fields */
+input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Style the button */
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
+/* Style the result textarea */
+textarea {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  height: 10rem;
+}
+    </style> 
+  </head>
+  <body>
+    <div class="container">
+    <h1>Matrix Transpose Calculator</h1>
+    <p>Enter the number of rows and columns of the matrix:</p>
+    <label for="rows">Number of Rows:</label>
+    <input type="number" id="rows" />
+    <br />
+    <label for="columns">Number of Columns:</label>
+    <input type="number" id="columns" />
+    <br />
+    <button onclick="transpose()">Transpose</button>
+    <br />
+    <br />
+    <label for="result">Result:</label>
+    <textarea id="result" rows="10" cols="50"></textarea>
+  </div>
+    <script>function transpose() {
+      // Get the number of rows and columns
+      const rows = parseInt(document.getElementById("rows").value);
+      const columns = parseInt(document.getElementById("columns").value);
+    
+      // Create the matrix
+      const matrix = new Array(rows);
+      for (let i = 0; i < rows; i++) {
+        matrix[i] = new Array(columns);
+        for (let j = 0; j < columns; j++) {
+          matrix[i][j] = parseInt(prompt(`Enter the element at (${i}, ${j}):`));
+        }
+      }
+    
+      // Transpose the matrix
+      const result = new Array(columns);
+      for (let i = 0; i < columns; i++) {
+        result[i] = new Array(rows);
+        for (let j = 0; j < rows; j++) {
+          result[i][j] = matrix[j][i];
+        }
+      }
+    
+      // Display the result
+      document.getElementById("result").value = JSON.stringify(result);
+    }
+    </script>
+  </body>
+</html>
